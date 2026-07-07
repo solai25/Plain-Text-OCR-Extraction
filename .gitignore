@@ -1,4 +1,8 @@
 .venv/
 models/
 outputs/
+<<<<<<< HEAD
+llama_cpp/
+=======
 llama-cpp/
+>>>>>>> 89ed228b5e4795a57dc10a9fdbe3e533e3365047

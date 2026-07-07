@@ -1,4 +1,45 @@
 import os
+<<<<<<< HEAD
+import sys
+import shutil
+import urllib.request
+import zipfile
+
+# =====================================================================
+# AUTOMATED RUNTIME LLAMA-CPP ENVIRONMENT SETUP (PURE PYTHON)
+# =====================================================================
+LOCAL_LLAMA_DIR = os.path.abspath("llama_cpp")
+
+if sys.platform == "win32":
+    # Check if llama-server is already globally accessible in the system PATH
+    llama_present = shutil.which("llama-server") is not None
+    
+    if not llama_present:
+        if not os.path.exists(os.path.join(LOCAL_LLAMA_DIR, "llama-server.exe")):
+            print("[INFO] Local llama-server executable not detected. Beginning automated configuration...")
+            os.makedirs(LOCAL_LLAMA_DIR, exist_ok=True)
+            zip_target = os.path.join(LOCAL_LLAMA_DIR, "llama_bins.zip")
+            
+            url = "https://github.com/ggml-org/llama.cpp/releases/download/b9873/llama-b9873-bin-win-cuda-13.3-x64.zip"
+            
+            try:
+                print("Downloading binary archive...")
+                urllib.request.urlretrieve(url, zip_target)
+                
+                print("Extracting components...")
+                with zipfile.ZipFile(zip_target, 'r') as zip_ref:
+                    zip_ref.extractall(LOCAL_LLAMA_DIR)
+                    
+                if os.path.exists(zip_target):
+                    os.remove(zip_target)
+                print("[SUCCESS] Local llama-server installation resolved.")
+            except Exception as e:
+                print(f"[ERROR] Failed to automatically download llama.cpp: {e}")
+            
+        # Dynamically append target binary directory to active session path block
+        os.environ["PATH"] = LOCAL_LLAMA_DIR + os.pathsep + os.environ["PATH"]
+=======
+>>>>>>> 89ed228b5e4795a57dc10a9fdbe3e533e3365047
 
 # ==========================================
 # 1. ENVIRONMENT & FOLDER SETUP
@@ -14,6 +55,14 @@ os.environ["HF_HOME"] = MODEL_DIR
 os.environ["HUGGINGFACE_HUB_CACHE"] = MODEL_DIR
 os.environ["HF_HUB_CACHE"] = MODEL_DIR
 
+<<<<<<< HEAD
+# FORCE SURYA TO USE NATIVE LLAMA.CPP INSTEAD OF VLLM/DOCKER
+os.environ["SURYA_INFERENCE_BACKEND"] = "llamacpp"
+# FORCE THE CUDA LLAMA-SERVER BINARY TO OFFLOAD ALL LAYERS TO GPU
+os.environ["LLAMA_ARG_N_GPU_LAYERS"] = "99"
+
+=======
+>>>>>>> 89ed228b5e4795a57dc10a9fdbe3e533e3365047
 # ==========================================
 # 2. STANDARD IMPORTS (AFTER ENV VARIABLES)
 # ==========================================
@@ -30,7 +79,12 @@ import re
 # ==========================================
 HAS_GPU = torch.cuda.is_available()
 DEVICE_STATUS = "GPU (CUDA)" if HAS_GPU else "CPU / Apple Silicon"
+<<<<<<< HEAD
+# FIX THE VISUAL BUG: Reflect the actual backend being used
+BACKEND_STATUS = os.environ.get("SURYA_INFERENCE_BACKEND", "vllm" if HAS_GPU else "llamacpp")
+=======
 BACKEND_STATUS = "vllm" if HAS_GPU else "llamacpp"
+>>>>>>> 89ed228b5e4795a57dc10a9fdbe3e533e3365047
 
 # ==========================================
 # 3. LAZY LOADING MODEL MANAGERS
