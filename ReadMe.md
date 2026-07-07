@@ -81,17 +81,28 @@ Then run the final installation check:
 ````DOS
 pip install -r requirements.txt
 ````
+<<<<<<< HEAD
 ### 4. Configure Local llama.cpp Mannualy (For GGUF Execution)
 Since this application uses GGUF models locally on Windows, it relies on a local llama-server.exe binary compilation.
 On the first run of this app automatically did this for you, but in case if the vertion is not match do it mannualy, by following the steps.
+=======
+### 4. Configure Local llama.cpp (For GGUF Execution)
+Since this application uses GGUF models locally on Windows, it relies on a local llama-server.exe binary compilation.
+>>>>>>> 89ed228b5e4795a57dc10a9fdbe3e533e3365047
 
 * Create a folder named llama-cpp directly in your project root directory.
 
 * Go to the official [llama.cpp](https://github.com/ggerganov/llama.cpp/releases) Releases Page.
 
+<<<<<<< HEAD
 * Download the CUDA Windows binary zip bundle matching your CUDA installed in your System (e.g., look for files containing win-cuda-cu12.2-x64.zip or similar).
 
 * Extract the contents of that zip file and copy all files (including llama-server.exe and its associated .dll files) directly into your newly created llama-cpp/ project directory. **And add that llama-cpp folder location to environment variable path.**
+=======
+* Download the CUDA Windows binary zip bundle matching your setup (e.g., look for files containing win-cuda-cu12.2-x64.zip or similar).
+
+* Extract the contents of that zip file and copy all files (including llama-server.exe and its associated .dll files) directly into your newly created llama-cpp/ project directory.
+>>>>>>> 89ed228b5e4795a57dc10a9fdbe3e533e3365047
 
 ## ⚡ Running the Application
 Launch the local web server by executing:
