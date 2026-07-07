@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 ### 4. Configure Local llama.cpp Mannualy (For GGUF Execution)
 Since this application uses GGUF models locally on Windows, it relies on a local llama-server.exe binary compilation.
-On the first run of this app automatically did this for you, but in case if the vertion is not match do it mannualy, by following the steps.
+On the first run of this app automatically did this for you, but in case if the version is not match do it mannualy, by following the steps.
 
 * Create a folder named llama-cpp directly in your project root directory.
 
