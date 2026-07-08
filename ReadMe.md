@@ -1,8 +1,9 @@
-# Plain Text OCR Extraction - Created BY Solai (Powered by Surya OCR)
+# Plain Text OCR Extraction - Created BY Solai - Powered by Surya OCR
+                
 A high-performance, web-based Document OCR extraction tool built with Gradio and powered by Surya AI. This application provides state-of-the-art text extraction from documents using local GGUF models accelerated via llama.cpp. It handles layout reading order seamlessly, strips out unnecessary HTML formatting, and saves text-only transcripts with automated GPU/CUDA acceleration support.
 
 ## 🚀 Features
-* GGUF & llama.cpp Integration: Optimized to run quantized GGUF models locally using an embedded llama-cpp engine to minimize VRAM usage while maintaining accuracy.
+* GGUF & llama.cpp Integration: Optimized to run Quantize GGUF models locally using an embedded llama-cpp engine to minimize VRAM usage while maintaining accuracy.
 
 * GPU-Accelerated Processing: Full native integration with NVIDIA CUDA wheels for blazing-fast inference speeds.
 
@@ -31,7 +32,7 @@ OCR-Surya/
 └── requirements.txt        # High-level UI and engine dependency file
 ````
 ## 🛠️ System Requirements
-## Operating System
+### Operating System
 * Windows 10 / 11 (Native Execution on local drive recommended, e.g., D: drive)
 
 * Linux / macOS (Supported via standard fallback paths)
@@ -51,7 +52,7 @@ OCR-Surya/
 ** Follow these steps carefully to ensure your local Python environment and the standalone llama.cpp binaries are correctly configured for GPU usage. ** 
 
 ### 1. Initialize Virtual Environment
-Open your terminal inside the project root folder (D:\Ai_App's\OCR-Surya) and run:
+Open your terminal inside the project root folder and run:
 ````
 python -m venv .venv
 .venv\Scripts\activate
@@ -62,7 +63,7 @@ To bypass standard Windows package registry overrides and fulfill Surya's modern
 ````
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128 --upgrade
 ````
-(Note: If utilizing an older system configuration, modify cu128 to cu124 or cu121 matching your native graphics driver parameters).
+(Note: If utilizing an older system configuration, modify `cu128` to `cu124` or `cu121` matching your native graphics driver parameters).
 
 ### 3. Install App Requirements
 Ensure your local requirements.txt contains the following lines:
@@ -82,9 +83,9 @@ Then run the final installation check:
 pip install -r requirements.txt
 ````
 
-### 4. Configure Local llama.cpp Mannualy (For GGUF Execution)
+### 4. Configure Local llama.cpp Manually (For GGUF Execution)
 Since this application uses GGUF models locally on Windows, it relies on a local llama-server.exe binary compilation.
-On the first run of this app automatically did this for you, but in case if the version is not match do it mannualy, by following the steps.
+On the first run of this app automatically did this for you, but in case if the version is not match do it manually, by following the steps.
 
 * Create a folder named llama-cpp directly in your project root directory.
 
@@ -92,7 +93,7 @@ On the first run of this app automatically did this for you, but in case if the 
 
 * Download the CUDA Windows binary zip bundle matching your CUDA installed in your System (e.g., look for files containing win-cuda-cu12.2-x64.zip or similar).
 
-* Extract the contents of that zip file and copy all files (including llama-server.exe and its associated .dll files) directly into your newly created llama-cpp/ project directory. **And add that llama-cpp folder location to environment variable path.**
+* Extract the contents of that zip file and copy all files (including `llama-server.exe` and its associated `.dll` files) directly into your newly created `llama-cpp/` project directory. **And add that llama-cpp folder location to environment variable path.**
 
 
 ## ⚡ Running the Application
@@ -101,7 +102,7 @@ Launch the local web server by executing:
 ````DOS
 python app.py
 ````
-* The script will initialize your environments, linking HF_HOME directly to your local ./models/ folder to save system drive space.
+* The script will initialize your environments, linking HF_HOME directly to your local `./models/` folder to save system drive space.
 
 * It will detect your local llama-cpp backend configuration to drive the GGUF text layers.
 
